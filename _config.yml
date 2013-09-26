@@ -1,5 +1,2 @@
-name: "Sean is not Xiong!"
-markdown: redcarpet
+markdown: rdiscount
 pygments: true
-safe: true
-permalink: pretty

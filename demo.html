@@ -1,20 +1,25 @@
----
-layout: page
-title: "Demo"
-description: ""
----
-{% include JB/setup %}
-
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/scripts/editr/editr.css">
+</head>
+<body>
 <div class="editr" data-item="test" data-files-html="index-1.html"></div>
+
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="//cdn.jsdelivr.net/ace/1.1.01/min/ace.js"></script>
 <script src="//cdn.jsdelivr.net/ace/1.1.01/min/ext-emmet.js"></script>
 <script src="/scripts/editr/libs/ext.emmet.js"></script>
 <script src="/scripts/editr/editr.js"></script>
 <script>
-    $(function(){
-        $('.editr').each(function() {
+    $(function () {
+        $('.editr').each(function () {
             new Editr({ el: this });
         });
     });
 </script>
+
+</body>
+</html>

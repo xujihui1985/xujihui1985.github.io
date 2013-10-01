@@ -11,3 +11,10 @@ description: ""
 <script src="//cdn.jsdelivr.net/ace/1.1.01/min/ext-emmet.js"></script>
 <script src="/scripts/editr/libs/ext.emmet.js"></script>
 <script src="/scripts/editr/editr.js"></script>
+<script>
+    $(function(){
+        $('.editr').each(function() {
+            new Editr({ el: this });
+        });
+    });
+</script>

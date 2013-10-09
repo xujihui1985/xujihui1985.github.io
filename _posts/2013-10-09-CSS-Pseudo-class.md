@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Manage Node With NVM"
+title: "Understand CSS Pseudo Class"
 description: ""
 category: "CSS"
 tags: [CSS]
@@ -16,7 +16,7 @@ but in CSS3 it become `::` that is said `::before`, `::after`, but single `:` is
 
 ### Let's look at an exemple
 
-<iframe width="100%" height="300" src="http://jsfiddle.net/xujihui1985/Fwaak/embedded/" frameborder="0"> </iframe>
+<iframe width="100%" height="300" src="http://jsfiddle.net/xujihui1985/WbHwQ/embedded/" frameborder="0"> </iframe>
 
 we can also use image as the before element or after element
 
@@ -72,5 +72,4 @@ also we could apply transition on the pseudo-class
 	-webkit-transition: all 350ms;
 
 ### example 
-
 <iframe width="100%" height="300" src="http://jsfiddle.net/xujihui1985/WbHwQ/4/embedded/" frameborder="0"> </iframe>

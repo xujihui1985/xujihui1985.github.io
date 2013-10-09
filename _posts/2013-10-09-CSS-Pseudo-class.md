@@ -72,3 +72,4 @@ also we could apply transition on the pseudo-class
 	-webkit-transition: all 350ms;
 
 ### example 
+<iframe width="100%" height="300" src="http://jsfiddle.net/xujihui1985/WbHwQ/4/embedded/" frameborder="0"> </iframe>

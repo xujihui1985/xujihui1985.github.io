@@ -20,7 +20,7 @@ tags: [Number]
             Console.WriteLine(zero.ToString(threePartFormat));
         }
 
-![Result](https://gpbz0a.blu.livefilestore.com/y2pQND6_3kySxaU6770oi3PkhTcSF1PIrmXFqhRXL_OQRn4TCX50DeJthhbyi0XzyvVBSmzqwWc3mgtaQR66TR1rhKabGh_kB-Epw5t1Ct8waU/Conditional-formatting-number.PNG?psid=1)
+<iframe src="https://skydrive.live.com/embed?cid=9DA6FDBDFB12F7A9&resid=9DA6FDBDFB12F7A9%21356&authkey=ACNnXyzknF6QI3Y" width="319" height="140" frameborder="0" scrolling="no"> </iframe>
 
 notice the `;` of the part
 **(pos)#.##;(net)#.##;(zero number)**

@@ -7,20 +7,7 @@ tags: [Number]
 ---
 {% include JB/setup %}
 
-        [Test]
-        public void ConditionalFormattingNumber()
-        {
-            const decimal positiveNumber = 100;
-            const decimal negNumber = -100;
-            const decimal zero = decimal.Zero;
-
-            const string threePartFormat = "(pos)#.##;(net)#.##;(zero number)";
-            Console.WriteLine(positiveNumber.ToString(threePartFormat));
-            Console.WriteLine(negNumber.ToString(threePartFormat));
-            Console.WriteLine(zero.ToString(threePartFormat));
-        }
-
-<iframe src="https://skydrive.live.com/embed?cid=9DA6FDBDFB12F7A9&resid=9DA6FDBDFB12F7A9%21356&authkey=ACNnXyzknF6QI3Y" width="319" height="140" frameborder="0" scrolling="no"> </iframe>
+<script src="https://gist.github.com/xujihui1985/a81ec5225d5683782e0e.js"></script>
 
 notice the `;` of the part
 **(pos)#.##;(net)#.##;(zero number)**

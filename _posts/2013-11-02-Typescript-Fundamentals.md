@@ -182,10 +182,7 @@ the syntax is
 Casting Types
 
 	var table: HTMLTableElement = document.createElement('table');
-
-	or
-
-	var table = <HTMLTableElement> document.createElement('table');
+	
 
 because HTMLTableElement is inherited from HTMLElement
 

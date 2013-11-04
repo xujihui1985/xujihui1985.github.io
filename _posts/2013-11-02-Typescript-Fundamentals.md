@@ -26,7 +26,6 @@ tags: [Typescript]
 8. module
 9. public/private
 10. ()=>{}
-11. <TypeName>
 ...
 
 

@@ -27,10 +27,13 @@ origin is an arbitrary name, you can call it anything, and url is the remote add
 	git remote -add origin https://github.com/xujihui1985/TypeScriptFundamental.git
 
 this is not finished.
-after we add remote branch, we need to setup the relationship between your localbranch and remotebranch using following command
->**git branch --set-upstream master origin/branchname**
+after we add remote branch, 
+we need to fetch the remote to local
+	git fetch
+then we need to setup the relationship between your localbranch and remotebranch using following command
+>**git branch --set-upstream-to origin/branchname**
 
-`master` is the local branch name, `origin` is the remote repository name you just create, and `branchname` is the remote branchname
+we need to checkout the master branch first, `master` is the local branch name, `origin` is the remote repository name you just create, and `branchname` is the remote branchname
 
 after that you can use `git pull` and `git push` to sync your local branch with remote branch
 

@@ -11,3 +11,5 @@ tags: [Number]
 
 notice the `;` of the part
 **(pos)#.##;(net)#.##;(zero number)**
+
+![result](https://skydrive.live.com/embed?cid=9DA6FDBDFB12F7A9&resid=9DA6FDBDFB12F7A9%21356&authkey=ACNnXyzknF6QI3Y)

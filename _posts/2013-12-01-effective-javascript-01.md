@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "new post"
+title: "Effective Javascript"
 description: ""
 category: "javascript"
 tags: [effectivejs]

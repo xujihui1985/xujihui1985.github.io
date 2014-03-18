@@ -8,9 +8,9 @@ tags: [GoTest]
 
 unittest is import
 
-in go the conversion is _test.go
+in go the conversion is \_test.go
 
-in the package, any file surfixed with _test.go is treated as unitttest file.
+in the package, any file surfixed with \_test.go is treated as unitttest file.
 
 and in unittest file, you need to import testing package
 

@@ -115,50 +115,50 @@ A command is a pipeline runs in a subshell
 
 	ls | while read -r; do ((++cout)); done
 
-cat <<END
+	cat <<END
 	text to use as input goes here
 END
 
 
-${#var}: length of $var
+	${#var}: length of $var
 
 
-${var#pattern} removes shortest match from begin of string
-${var##pattern} removes longest match from begin of string
-${var%pattern} removes shortest match from end of string
-${var%%pattern} removes longest match from end of string
+	${var#pattern} removes shortest match from begin of string
+	${var##pattern} removes longest match from begin of string
+	${var%pattern} removes shortest match from end of string
+	${var%%pattern} removes longest match from end of string
 
 example with i="\users\sean\demo.txt"
 
-${i#*/} ==> "users\sean\demo.txt"
-${i##*/} ==> "demo.txt"
-${i%.*} ==> remove the extension of the file "demo"
-${i%/*} ==> return the directory of the file
+	${i#*/} ==> "users\sean\demo.txt"
+	${i##*/} ==> "demo.txt"
+	${i%.*} ==> remove the extension of the file "demo"
+	${i%/*} ==> return the directory of the file
 
 
 Search and replace
 
-${var/pattern/string}  substitute first match with string
-
-${var//parttern/string} substitute all match with string
-
-${var/%parttern/string} substitute the end with string
+	${var/pattern/string}  substitute first match with string
+	
+	${var//parttern/string} substitute all match with string
+	
+	${var/%parttern/string} substitute the end with string
 
 
 i="mytxt.txt"
 
-echo ${i/%txt/jpg} ==> mytxt.jpg
-echo ${i/txt/jpg} ==> myjpg.txt
-echo ${i//txt/} ==> my.  //remove all the matches
+	echo ${i/%txt/jpg} ==> mytxt.jpg
+	echo ${i/txt/jpg} ==> myjpg.txt
+	echo ${i//txt/} ==> my.  //remove all the matches
 
 ## Default value
 
-${var:-value}
-will evaluate to "value" if var is empty or unset
-${var-value}
+	${var:-value}
+	will evaluate to "value" if var is empty or unset
+	${var-value}
 
 assign a default value
-${var:=value}
+	${var:=value}
 
 **declare notesdir=${NOTESDIR:-$HOME}**  
 //this will check if NOTESDIR has value, if it has value it will return $HOME

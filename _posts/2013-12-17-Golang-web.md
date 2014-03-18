@@ -1,3 +1,11 @@
+---
+layout: post
+title: "Go Test"
+description: ""
+category: "Go"
+tags: [Go Web]
+---
+
 set up a web server for go is easy
 
 	package main

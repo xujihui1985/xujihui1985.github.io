@@ -168,8 +168,8 @@ ${var:=value}
 
 == is the same operator as =
 
-[[ $filename == *.txt ]]  // pattern match
-[[ $var == "[0-9]" ]] // string match
+	[[ $filename == *.txt ]]  // pattern match
+	[[ $var == "[0-9]" ]] // string match
 
 =~   does regular expresson matching
 
@@ -185,7 +185,7 @@ for example
 
 rm -- -l.txt   this will remote the file named -l.txt
 
-for i in *.txt; do touch -- $1; done
+	for i in *.txt; do touch -- $1; done
 
 Good habit:
 
@@ -194,7 +194,7 @@ and the contents of the variable are not under your control use the end of optio
 
 ## run script
 
-**nohup myscript & **  this will keep your script running when you exit the terminal session
+	**nohup myscript & **  this will keep your script running when you exit the terminal session
 
 nohub nice myscript &
 
@@ -203,7 +203,7 @@ suppose there is a long running script, and I want to execute the script and log
 
 first I need to redirect the result to logfile
 
-nohup longrunningscript > log &
+nohup longrunningscript > log \&
 
 
 ## schedule the task

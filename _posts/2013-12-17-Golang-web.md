@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Go Test"
+title: "Go Web"
 description: ""
 category: "Go"
 tags: [Go Web]

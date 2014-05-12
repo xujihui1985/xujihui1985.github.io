@@ -100,3 +100,19 @@ try...catch binds a caught exception to a variable that is scoped just to the ca
 	}
 
 
+
+## Prototype
+
+When you instantiate an object (by invoking the function using the new operator), it inherits all the properties in the prototype of that function. Keep in mind, though, **that those instances will not have direct access to the prototype object but only to its properties.**
+	
+	// Extending the Person prototype from our earlier example to
+	// also include a 'getFullName' method:
+	Person.prototype.getFullName = function() {
+	  return this.firstName + ' ' + this.lastName;
+	}
+	
+	// Referencing the p1 object from our earlier example
+	console.log(p1.getFullName());            // prints 'John Doe'
+	// but p1 can’t directly access the 'prototype' object...
+	console.log(p1.prototype);                // prints 'undefined'
+	console.log(p1.prototype.getFullName());  // generates an error

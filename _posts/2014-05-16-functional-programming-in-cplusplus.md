@@ -3,7 +3,7 @@ layout: post
 title: "functional programming in c++"
 description: ""
 category: ""
-tags: [c++]
+tags: [cpp]
 ---
 {% include JB/setup %}
 
@@ -62,3 +62,121 @@ this will copy x and y from local scope into lambda, then when lambda execute, i
         std::cout << i << " " << x << " "<< y << std::endl; 
         x = 9;
     });
+
+## populating a vector
+
+```cpp
+	//use for loop
+	for (int i =0; i <5; i++)
+	{
+		v.push_bach(i);
+	}
+
+	// use algorithm
+    vector<int> v;
+    int i=0;
+    std::generate_n(std::back_inserter(v),5,[&i]()->int{ return i++; });
+
+```
+
+## counting the number of 3's
+
+use algorithm
+```cpp
+	int count3 = std::count(v.begin(),v.end(),3);
+    std::cout << "the count3 of v is " << count3 << std::endl;
+```
+use for loop
+
+```cpp
+	
+	int count = 0;
+	for(unsigned int i = 0; i<v.size(); i++)
+	{
+		if(v[i] == 3)
+			count++;
+	}
+
+```
+
+use iterator
+
+```cpp
+	int count = 0;
+	for(auto it = begin(v); it != end(v); it++)
+	{
+		if(*it == 3)
+		{
+			count++;
+		}
+	}
+
+```
+
+## remove element from vector
+
+** the result of `remove_if` point to the end of the vector, for preformance reason, remove_if didn't erase element, it will push the "removed" element back to end**
+
+```cpp
+	  vector<int> v;
+      int i=0;
+      std::generate_n(std::back_inserter(v),5,[&i]()->int{ return i++; });
+      auto vcopy = v;
+	  auto endv = std::remove_if(begin(vcopy),end(vcopy),[=](int elem)->bool { return (elem == 2 || elem == 3);});
+      vcopy.erase(endv, end(vcopy));
+```
+vcopy.erase(endv, end(vcopy)); means remove from the **new end** to **original end**
+
+## function pointer
+
+	typedef int (*CHANGER)(int i);
+
+define a function pointer CHANGER, take integer as parameter and return integer type
+
+	int doubler(int i)
+	{
+		return i * 2;
+	}
+
+	int tripler(int i)
+	{
+		return i * 3;
+	}
+
+	CHANGER = doubler;
+
+	CHANGER(2);  ==> 4
+
+
+## Pointer to Member Function
+
+	typedef int (Utility::* UF)();
+
+	UF action;
+	action = &Utility::triplex;
+
+	call:
+	Utility u(i);
+	UF action;
+	if(i > 3)
+	{
+		action = &Utility::triplex;
+	}
+	else
+	{
+		action = &Utility::doublex;
+	}
+	return (u.*action)();  //because it is pointer, need to be deferenced
+
+
+## void*
+
+can be cast to any kind of pointer
+
+	void SomeMethod(void* something)
+	{
+		int* s = (int*) something;
+		cout << *s << endl;
+	}
+
+

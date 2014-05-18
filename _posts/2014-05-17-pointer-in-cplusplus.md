@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "new post"
+title: "pointer in c++"
 description: ""
-category: ""
-tags: [cpp]
+category: "cpp"
+tags: [pointer]
 ---
 {% include JB/setup %}
 
@@ -23,8 +23,3 @@ tags: [cpp]
 	- a list of the resources your're using
 3. Shared access to an object on the free store
 	- with no single owner
-
-### Member variable, lifetime tied to the class
-
-- old school: destructor of the class deletes the object
-- 

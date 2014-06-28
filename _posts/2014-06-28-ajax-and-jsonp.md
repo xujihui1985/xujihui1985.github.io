@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "new post"
+title: "ajax and jsonp"
 description: ""
-category: ""
-tags: []
+category: "javascript"
+tags: [jsonp,ajax]
 ---
 {% include JB/setup %}
 

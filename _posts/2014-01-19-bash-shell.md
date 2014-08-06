@@ -214,3 +214,43 @@ at -f myscript noon tomorrow
 
 Cron
 will execute your script according to a schedule
+
+`crontab -e` to edit the schedule
+
+format
+
+min hour dayofmonth month dayofweek command
+
+`* arbitory number`
+`*/min  every x min`
+`, ` eg: 10,20,30 1 * * * /bin/echo "hello"
+echo hello everyday at 1 aclock, at 10,20 and 30 mins 
+
+
+## cut
+
+```
+cut -d':' -f1,2 /etc/passwd
+seprate the /etc/passwd file by : and get the first and second column 
+```
+cut must supply file as the second argument, but if I want to cut the stdout from another command like `env` what I can do is use named pipeline [http://en.wikipedia.org/wiki/Named_pipe](http://en.wikipedia.org/wiki/Named_pipe "namedpipe")
+
+```
+mkfifo my_pipe
+env > my_pipe &
+cut -d'=' -f1 my_pipe
+```
+
+because command `env > my_pipe` will block the frontend, so must put it on the backend process or I need to startup another terminal
+
+## tar
+
+```
+tar -czf archive.gz /directory
+```
+
+sometime I want to copy a large amount of files to another directory or to remote without create a archive file I can use `-`, for `-czf` `-` means, instead of create an archive file, write the tarred up filed onto `stdout`, for `-xzf` means, extracting a tarfile from `stdin`
+
+```
+tar -czf - /directory | tar -xzf -
+```

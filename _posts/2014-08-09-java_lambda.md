@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "new post"
+title: "java lambda - functional interface"
 description: ""
 category: "java"
 tags: [lambda]
@@ -141,4 +141,4 @@ Predicate<String> p2 = s -> s.length() > 10;
 Predicate<String> p3 = p1.and(p2);
 
 ```
-![](http://imgur.com/CVyZtLV)
+![](http://i.imgur.com/CVyZtLV.png)

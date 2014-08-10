@@ -246,11 +246,97 @@ because command `env > my_pipe` will block the frontend, so must put it on the b
 ## tar
 
 ```
-tar -czf archive.gz /directory
+tar -czvf archive.gz /directory
+tar -cjvf archive.tar.bz2 /directory   /smaller but slower
+```
+
+```
+tar -tzf archive.gz  //just list the file in the tar
+tar -xzvf archive.gz  //unzip the gz file
+tar -xjvf archive.bz2  //unzip the bzip file
 ```
 
 sometime I want to copy a large amount of files to another directory or to remote without create a archive file I can use `-`, for `-czf` `-` means, instead of create an archive file, write the tarred up filed onto `stdout`, for `-xzf` means, extracting a tarfile from `stdin`
 
 ```
 tar -czf - /directory | tar -xzf -
+```
+
+### save file with sudo in vim
+
+```
+:w !sudo tee %
+```
+### vim a remote file
+```
+vim scp://username@host//path/to/somefile
+scp is remote file copy program
+```
+
+### scp
+
+```
+Copy the file "foobar.txt" from a remote host to the local host
+$ scp your_username@remotehost.edu:foobar.txt /some/local/directory
+
+Copy the file "foobar.txt" from the local host to a remote host
+$ scp foobar.txt your_username@remotehost.edu:/some/remote/directory
+
+Copy the directory "foo" from the local host to a remote host's directory "bar"
+$ scp -r foo your_username@remotehost.edu:/some/remote/directory/bar
+
+Copy the file "foobar.txt" from remote host "rh1.edu" to remote host "rh2.edu"
+$ scp your_username@rh1.edu:/some/remote/directory/foobar.txt \
+your_username@rh2.edu:/some/remote/directory/
+
+Copying the files "foo.txt" and "bar.txt" from the local host to your home directory on the remote host
+$ scp foo.txt bar.txt your_username@remotehost.edu:~
+
+Copy the file "foobar.txt" from the local host to a remote host using port 2264
+$ scp -P 2264 foobar.txt your_username@remotehost.edu:/some/remote/directory
+
+Copy multiple files from the remote host to your current directory on the local host
+$ scp your_username@remotehost.edu:/some/remote/directory/\{a,b,c\} .
+$ scp your_username@remotehost.edu:~/\{foo.txt,bar.txt\} .
+
+```
+
+### date convert datespan to date
+
+```
+date -d@12343345
+```
+
+### check ascii
+
+```
+man ascii
+```
+
+### ssh compage a local file with remote file
+
+```
+ssh user@host cat /path/to/remotefile | diff /path/to/localfile -
+```
+
+### du
+
+```
+du -sh /etc
+
+-s for summary
+h for human readable
+```
+
+
+### rsync
+
+```
+rsync -av /home/backup
+rsync -ave ssh
+
+mkdir /backup
+rsync -av /*archive mode*/  /home/ /backup/   /*if there is trailing /, that means backup the content of the directory*/
+
+rsync -av --delete /home/ /backup/  /*this also sync the deleted files*/
 ```

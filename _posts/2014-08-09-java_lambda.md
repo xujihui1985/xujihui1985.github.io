@@ -140,5 +140,7 @@ Predicate<String> p2 = s -> s.length() > 10;
 
 Predicate<String> p3 = p1.and(p2);
 
+Predicate<String> p = Predicate.isEqual("two");
+
 ```
 ![](http://i.imgur.com/CVyZtLV.png)

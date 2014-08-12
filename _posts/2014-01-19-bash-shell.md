@@ -3,7 +3,7 @@ layout: post
 title: "Bash Shell"
 description: ""
 category: "shell"
-tags: [linux]
+tags: [command]
 ---
 {% include JB/setup %}
 
@@ -16,6 +16,14 @@ Tip:Using the `tail -f /var/log/syslog` technique is a great way to watch what t
 find:
 
 	find dir -type f[f:file, d:directory ...] -name filename[wildcard] -exec command '{}' ';'
+
+find by regex:
+
+```
+find . -regex '\.md$' -exec git add {} \;
+
+```
+add app file that sufix with .md to git local repository
 
 eg 
 	

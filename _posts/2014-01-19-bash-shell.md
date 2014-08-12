@@ -3,7 +3,7 @@ layout: post
 title: "Bash Shell"
 description: ""
 category: "shell"
-tags: [linux]
+tags: [command]
 ---
 {% include JB/setup %}
 

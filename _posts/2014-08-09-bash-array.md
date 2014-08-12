@@ -185,6 +185,24 @@ done
 
 ```
 
+### hash
+in bash4, we can define hash like array
+
+```
+declare -A animals
+animals=(["key"]="value")
+
+Then use them just like normal arrays.  "${animals[@]}" expands the values, "${!animals[@]}" (notice the !) expands the keys. Don't forget to quote them:
+
+get by key
+
+echo "${animals["moo"]}"
+
+loop the hash
+for sound in "${!animals[@]}"; do echo "$sound - ${animals["$sound"]}"; done
+
+```
+
 reference:
 
 Bash Brace Expansion

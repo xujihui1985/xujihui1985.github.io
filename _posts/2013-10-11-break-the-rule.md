@@ -126,3 +126,11 @@ if (x == null)
 	    '' : new Array(count + 1).join(this);
 	}
 	'me'.times(10); //"memememememememememe"
+
+
+### test if array contain element
+
+```
+!!~array.indexOf(element)
+
+```

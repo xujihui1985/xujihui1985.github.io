@@ -16,7 +16,6 @@ description: ""
 					  "first" : "喜欢新鲜的东西",
 					  "second": "喜欢在月黑风高的夜晚写点小代码陶冶一下情操",
 					  "thrid" : "喜欢烧点菜什么的，但不喜欢洗碗",
-					  "fourth": "喜欢烧点菜什么的，但不喜欢洗碗",
 					  "last"  : "喜欢看看八卦书籍"
 				   },
 
@@ -24,7 +23,8 @@ description: ""
 					  "first": "不喜欢重复做一件事情"
 				   },
 
-	"programming": "喜欢各类脚本语言，js, python, ruby, haskell, go 希望有机会能和大家学习",
+	"programming": "喜欢各类脚本语言，js, python, ruby, haskell, go 希望有机会能和大家学习, 从刚毕业开始就开始用c#, 和java比起来我更
+	喜欢c#的简洁，但自从接触脚本语言之后，就开始对各类脚本语言着迷",
 
 	"other"      : "我是忠实的vimer, 大家有喜欢vim的，希望能交流",
 

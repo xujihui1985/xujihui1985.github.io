@@ -24,24 +24,45 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-                <section>
-                    <h1> Java 8 </h1>
-                </section>
-                <section>
-                    <h2>Optional</h2>
-					<p>
-			           a wraper that can set default value of the underlining object when
-                        the object is null        
-					</p>
-                    <br>
-                    <h3>Main api:</h3>
-                    <ol>
-                        <li>ifPresent</li>
-                        <li>of</li>
-                        <li>get</li>
-                        <li>orElse</li>
-                    </ol>
-                </section>
+        <section>
+          <h1> Java 8 </h1>
+        </section>
+        <section>
+          <h2>Optional</h2>
+          <p>
+          a wraper that can set default value of the underlining object when
+          the object is null        
+          </p>
+          <br>
+          <h3>Main api:</h3>
+          <ol>
+            <li>ifPresent</li>
+            <li>of</li>
+            <li>get</li>
+            <li>orElse</li>
+          </ol>
+        </section>
+        <section>
+          <h2>
+            lambda
+          </h2>
+          to filter files under dir, we have to write code like:
+          <pre><code data-trim>
+            FileFilter fileFilter = new FileFilter() {
+              @Override
+              public boolean accept(File file) {
+                return file.getName().endsWith(".java");
+              }
+            } 
+            File dir = new File("~/work/tests");
+            File[] javaFiles = dir.listFiles(fileFilter);
+          </code></pre>
+        </section>
+        <section>
+          <h2>What is the type of a lambda expression?</h2>
+          <h2>Can a lambda be put in a variable?</h2>
+          <h2>is lambda express is a object?</h2>
+        </section>
 			</div>
 		</div>
 

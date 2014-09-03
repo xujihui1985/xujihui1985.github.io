@@ -83,9 +83,106 @@
           </section>
           <section>
             Yes, lambda express can be put in a variable as a function pointer,
+            <br>
             it can be saved in the field of the object and call later
           </section>
         </section>
+        <section>
+          There are four categories of Functional Interface
+          <section>
+            <pre><code data-trim>
+              @FunctionalInterface
+              public interface Supplier<T> {
+                T get();
+              }
+            </code></pre>
+          </section>
+          <section>
+            <pre><code data-trim>
+              @FunctionalInterface
+              public interface Consumer<T> {
+                void accept(T t);
+              }
+
+              @FunctionalInterface
+              public interface BiConsumer<T, U> {
+                void accept(T t, U u);
+              }
+            </code></pre>
+          </section>
+          <section>
+            <pre><code data-trim>
+              @FunctionalInterface
+              public interface Predicate<T> {
+                bool test(T t);
+              }
+            </code></pre>
+          </section>
+          <section>
+            <pre><code data-trim>
+              @FunctionalInterface
+              public interface Function<T, R> {
+                R apply (T t);
+              }
+            </code></pre>
+          </section>
+        </section>
+        <section>
+          Interface can be inherited, so does FunctionalInterface
+          <section>
+            <pre><code data-trim>
+            @FunctionalInterface
+            public interface UnaryOperator&ltT&gt : Function&ltT, T&gt {
+
+            }
+
+            @FunctionalInterface
+            public interface BinaryOperator&ltT, T&gt : BiFunction&ltT, T, T&gt {
+
+            }
+            </code></pre>
+
+            UnaryOperator takes one type as parameter and return the same type of result
+          </section>
+        </section>
+        <section>
+            <pre><code data-trim>
+              Comparator&ltInteger&gt c = (i1, i2) -> Integer.compare(i1, i2);
+
+              is same as
+
+              Comparator&ltInteger&gt c = Integer::compare;
+            </code></pre>
+        </section>
+
+        <section>
+          we have seen the method forEach on a collection, but how does java implement this function?
+        </section>
+
+        <section>
+          the answer is Default method
+
+          we know the class muse implement the method in the interface if it implement from that interface
+          to add a forEach method in Iterable interface needs a lot of effert to refactor
+
+          thanks to Default method we can
+          <pre><code data-trim>
+          default void forEach(Consumer consumer) {
+            for(E e : this) {
+              consumer.accept(e);
+            }
+          }
+          </code></pre>
+        </section>
+
+        <section>
+          <h2> What's next? </h2>
+        </section>
+
+        <section>
+          <h2> Stream </h2>
+        </section>
+        
 			</div>
 		</div>
 

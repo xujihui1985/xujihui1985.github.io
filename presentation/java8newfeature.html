@@ -159,14 +159,20 @@
           we have seen the method forEach on a collection, but how does java implement this function?
         </section>
 
-        <section>
-          the answer is Default method
-          <br>
-          we know the class muse implement the method in the interface if it implement from that interface
-          <br>
-          to add a forEach method in Iterable interface needs a lot of effert to refactor
-          <br>
-          thanks to Default method we can
+				<section data-markdown>
+					<script type="text/template">
+						## Markdown support
+
+						For those of you who like that sort of thing. Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
+
+						  ## the answer is Default method
+ 
+              we know the class muse implement the method in the interface if it implement from that interface
+
+              to add a forEach method in Iterable interface needs a lot of effert to refactor
+
+              thanks to Default method we can
+					</script>
           <pre><code data-trim>
           default void forEach(Consumer consumer) {
             for(E e : this) {
@@ -174,8 +180,7 @@
             }
           }
           </code></pre>
-        </section>
-
+				</section>
         <section>
           <h2> What's next? </h2>
         </section>

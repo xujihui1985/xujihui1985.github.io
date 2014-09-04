@@ -92,7 +92,7 @@
           <section>
             <pre><code data-trim>
               @FunctionalInterface
-              public interface Supplier<T> {
+              public interface Supplier&ltT&gt {
                 T get();
               }
             </code></pre>
@@ -100,12 +100,12 @@
           <section>
             <pre><code data-trim>
               @FunctionalInterface
-              public interface Consumer<T> {
+              public interface Consumer&ltT&gt {
                 void accept(T t);
               }
 
               @FunctionalInterface
-              public interface BiConsumer<T, U> {
+              public interface BiConsumer&ltT, U&gt {
                 void accept(T t, U u);
               }
             </code></pre>
@@ -113,7 +113,7 @@
           <section>
             <pre><code data-trim>
               @FunctionalInterface
-              public interface Predicate<T> {
+              public interface Predicate&ltT&gt {
                 bool test(T t);
               }
             </code></pre>
@@ -121,7 +121,7 @@
           <section>
             <pre><code data-trim>
               @FunctionalInterface
-              public interface Function<T, R> {
+              public interface Function&ltT, R&gt {
                 R apply (T t);
               }
             </code></pre>
@@ -161,10 +161,11 @@
 
         <section>
           the answer is Default method
-
+          <br>
           we know the class muse implement the method in the interface if it implement from that interface
+          <br>
           to add a forEach method in Iterable interface needs a lot of effert to refactor
-
+          <br>
           thanks to Default method we can
           <pre><code data-trim>
           default void forEach(Consumer consumer) {

@@ -28,6 +28,8 @@ Containers are a lightweight virtualization technology
 4. version controlled
 5. each container is a isolated enviroment
 
+![](http://i.imgur.com/pYFjWx7.png)
+
 ### [Vagrant](https://www.vagrantup.com/ "Vagrant")
 
 lots of people like to compare docker with vagrant which is a VM management tools, it is quite similer with docker in some aspect, such as vagrantfile vs Dockerfile,  pervision vs docker run, start up a vagrant instance in one command.
@@ -80,6 +82,13 @@ brain storm
 2. quick fall back if new version is not stable
 3. ci
 4. develop enviroment is same as production
+5. install an application in an isolated manner.
+
+eg:
+```
+sudo docker run -v /usr/local/bin:/target jpetazzo/nsenter
+```
+
 
 ### problem I have encounted
 
@@ -87,4 +96,4 @@ docker require linux kernal 3.8, so it's not support osx natively, we have to us
 
 boot2docker is easy to setup, but the vital problem is that it doesn't support volumn share so, vagrant is a better choice in my respect.
 
- 
+how to manager containers?  

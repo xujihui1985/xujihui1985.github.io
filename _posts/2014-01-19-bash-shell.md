@@ -354,3 +354,20 @@ rsync -av /*archive mode*/  /home/ /backup/   /*if there is trailing /, that mea
 
 rsync -av --delete /home/ /backup/  /*this also sync the deleted files*/
 ```
+
+### grep
+
+multiple expression
+
+```
+grep -ve '^#' -ve '^$' /etc/ntp/conf   //remove comment and empty line
+
+sed '/^#/d;/^$/d' /etc/ntp/conf    //display in the screen
+sed -i '/^#/d;/^$/d' /etc/ntp/conf    //this will replace the origin file -i means edit the file in place
+
+cat /somefile | sed -e 's:\${hostname}:$HOSTNAME:" > newfile
+
+-e  execute expression
+s/.../.../  substitute
+```
+

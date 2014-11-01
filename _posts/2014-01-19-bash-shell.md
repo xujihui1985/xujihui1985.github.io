@@ -91,7 +91,7 @@ stream redirection
 
 	command 2> /dev/null
 
-this will discards all errors
+**this will discards all errors**
 
 everything in linux are files, stdin stdout stderr null are three files in /dev  , they are special files
 
@@ -101,15 +101,33 @@ stream redirect
 	cmd > logfile 2>&1  this will send stderr to stdout and since stdout is sent to logfile, botu stderr and stdout will be sent to logfile
 
 
-case WORD in
-	pattern1)
-		code for pattern 1;;
-	pattern2)
-		code for pattern 2;;
-	patternn)
-		code for pattern n;;
-esac
 
+	case WORD in
+		pattern1)
+			code for pattern 1;;
+		pattern2)
+			code for pattern 2;;
+		patternn)
+			code for pattern n;;
+	esac
+
+## select <> in <> ; do .. done
+	
+	select choice in $options ; do
+		case $choice in
+			"xxxx")
+				echo -e "adadaafsdfsadf"
+				break
+			;;
+			"yyyyy")
+				echo -e "dafadaff"
+				break
+			;;
+			*)
+				echo -e "afasfsd"
+				break
+			;;
+	end
 
 ## function
 
@@ -125,7 +143,7 @@ A command is a pipeline runs in a subshell
 
 	cat <<END
 	text to use as input goes here
-END
+	END
 
 
 	${#var}: length of $var

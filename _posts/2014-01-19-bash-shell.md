@@ -389,3 +389,38 @@ cat /somefile | sed -e 's:\${hostname}:$HOSTNAME:" > newfile
 s/.../.../  substitute
 ```
 
+===============================
+
+### to list every occurrence of the term "test" on a separate line
+
+```
+grep -or test . | wc -l
+
+-o : only match
+-r recursively process every file
+
+```
+
+### prints all the additional arguments passed to it in reverse order
+
+```
+for (( i = ${#}; i > 0; i--)); do
+    echo ${!i}
+done
+```
+
+```
+LOCKFILE=/tmp/lock-`whoami`
+if [[ -e ${LOCKFILE} ]] && kill -0 `cat ${LOCKFILE}`; then
+    echo "Already running"
+    exit 1
+fi
+
+trap "rm -f ${LOCKFILE}; exit" INT TERM EXIT
+echo $$ > ${LOCKFILE}
+```
+
+
+
+
+

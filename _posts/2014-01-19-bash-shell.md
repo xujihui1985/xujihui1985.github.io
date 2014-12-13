@@ -377,6 +377,8 @@ rsync -av --delete /home/ /backup/  /*this also sync the deleted files*/
 
 multiple expression
 
+**regular express must be surranded by single quote**
+
 ```
 grep -ve '^#' -ve '^$' /etc/ntp/conf   //remove comment and empty line
 
@@ -387,6 +389,7 @@ cat /somefile | sed -e 's:\${hostname}:$HOSTNAME:" > newfile
 
 -e  execute expression
 s/.../.../  substitute
+s:...:...:  substitute
 ```
 
 ===============================
@@ -420,7 +423,90 @@ trap "rm -f ${LOCKFILE}; exit" INT TERM EXIT
 echo $$ > ${LOCKFILE}
 ```
 
+### sed  -- stream editor
 
+`sed -n`  suppress the default behavior of echoed to the standard output
 
+`sed -n '1,5 p' /etc/passwd`  
+`sed -n '5,$ p' /etc/passwd`  -- print from 5 to the end of the document
+p represents for `print` this will print out line 1 to 5 from /etc/passwd
 
+`sed ' /^#/ d' /etc/ntp.conf`  d repensents for  `delete` this will delete the comment line and of the stdout stream, but not delete the lines in the file
 
+`sed ' /^#/ d; /^$/ d' /etc/ntp.conf`  use `;` to seprate two pattern
+
+`sed -i.bak ' /^#/ d ; /^$/ d' /etc/ntp.conf ` use **-i.bak** to backup the file before edit the file
+
+**use sed to replace the words in the file**
+```
+sed '[range] s/<string>/<replacement>' /etc/passwd
+sed '1,6 s/<string>/<replacement>' /etc/passwd
+sed '/^grethchen/ s:/bin/bash:/bin/sh:g' /etc/passwd
+```
+
+**use sed to append/insert/delete line**
+
+```
+sed ' /^server 3/ a server ntp.example.com' /etc/ntp.conf  //append a new line after a line
+sed ' /^server 0/ i server ntp.example.com' /etc/ntp.conf  //insert a new line before a line
+sed ' /^server 0/ d' /etc/ntp.conf  //delete the matched lines
+```
+
+**using multiple expression**
+
+```
+sed ' {
+	/^server 0/ i ntp.example.com
+	/^server\s[0-9]\.ubuntu/ d
+} ' /etc/ntp.conf
+```
+for code-reuse implement sed files
+> sed file can be referenced with the **-f ** option
+
+```
+sed -f ntp.sed /etc/ntp.conf
+```
+
+**substitution grouping with sed**
+
+```
+sed 's/\([^,]*\),\([^,]*\)/\U\1,\L\2/' employees
+```
+\U means uppercase
+\L means lowercase
+\1 means the first matched group
+
+**execute command with sed**
+
+```
+sed ' /^\// s/^/rm -f /e' cat.list   not support under mac
+```
+the first part `/^\//` is a range match which matches lines the start with `/`
+the second part `s/^/rm -f/` is the replase the first char with rm -f
+the third pard `/e` is to execute the command
+
+**use sed with vim**
+```
+create a snipet
+
+:4,10 w while.snip  select 4,10 lines and write to while.snip
+
+then open another file
+
+:r while.snip   read in the snip file
+```
+
+### awk 
+
+```
+awk ' BEGIN { print "start of the process" } { print NR, $0 } END { print NR }'
+
+```
+
+NR: ordinal number of the current record start from 1, $0 prints the entire record
+
+#### calling internal function
+
+```
+awk -F":" '/reglarexpress/{print toupper($0 $1 $2)}'
+```

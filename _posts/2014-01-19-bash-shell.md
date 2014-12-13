@@ -510,3 +510,75 @@ NR: ordinal number of the current record start from 1, $0 prints the entire reco
 ```
 awk -F":" '/reglarexpress/{print toupper($0 $1 $2)}'
 ```
+
+use users.awk to execute /etc/passwd
+```
+awk -f users.awk /etc/passwd
+```
+
+users.awk
+```
+BEGIN { FS=":"; print "Username" }
+$3 > 999 { print $1 ; count++ }
+END { print "Total Users : " count }
+
+```
+here $3 > 999 is a the condition for the awk, means the third field should be great than 999
+
+```
+BEGIN { FS=":"; print "Username" }
+/^s/ { print $1 ; count++ }
+END { print "Total Users : " count }
+
+```
+
+print out the line that is begin with s
+
+```
+awk -F"," ' { print toupper($1), tolower($2), $3 } ' employee.csv
+```
+
+RS  record seprate
+FS  field seprate
+OFS  output filed seprate
+
+#### process virtural host files
+
+1. use sed to clean up the file
+```
+sed ' /^\s*$/d; /^<\/Virt/a \n ' virtualhost.conf
+
+```
+
+2. write awk script
+
+```
+BEGIN { RS="\n\n" }
+$0 ~ search { print }  // here search is just the name of the variable, it can be anything
+```
+
+3. run the script
+
+```
+awk -f virtualhost.awk search=example virtualhost.conf
+```
+
+multiple seprate
+
+```
+BEGIN { FS="[><]" RS="\n\n" ; OFS=" " ;}
+$0 ~ search { print $4 ": " $5, $8 ": " $9, $12 ": " $13 }
+
+```
+
+#### create aggrate report
+
+```
+BEGIN { FS=" "; print "Log access" }
+{ ip[$1]++ }
+END {
+	for(i in ip)
+print i, " has accessed ", ip[i], " times. "
+}
+
+```

@@ -61,10 +61,13 @@ use tar and find
 There is a third way called a here documentor here script. A here document is an
 additional form of I/O redirection in which we embed a body of text into our script and
 feed it into the standard input of a command. It works like this:
-**command << token
-text
-token**
-where commandis the name of command that accepts standard input and  tokenis a string
+```
+command <<-token
+
+
+token
+```
+where command is the name of command that accepts standard input and  tokenis a string
 used to indicate the end of the embedded text. We’ll modify our script to use a here document:
 
 	#!/bin/bash 
@@ -97,6 +100,7 @@ everything in linux are files, stdin stdout stderr null are three files in /dev 
 
 stream redirect
 
+```
 	>&2 == 1>&2
 	cmd > logfile 2>&1  this will send stderr to stdout and since stdout is sent to logfile, botu stderr and stdout will be sent to logfile
 
@@ -110,9 +114,11 @@ stream redirect
 		patternn)
 			code for pattern n;;
 	esac
+```
 
 ## select <> in <> ; do .. done
-	
+
+```	
 	select choice in $options ; do
 		case $choice in
 			"xxxx")
@@ -128,7 +134,7 @@ stream redirect
 				break
 			;;
 	end
-
+```
 ## function
 
 redirection is allowed immediately after function definition
@@ -177,17 +183,24 @@ i="mytxt.txt"
 	echo ${i/txt/jpg} ==> myjpg.txt
 	echo ${i//txt/} ==> my.  //remove all the matches
 
+
 ## Default value
 
-	${var:-value}
-	will evaluate to "value" if var is empty or unset
+```
+	${var:-value}	will evaluate to "value" if var is empty or unset
+
 	${var-value}
+```
 
 assign a default value
-	${var:=value}
 
-**declare notesdir=${NOTESDIR:-$HOME}**  
-//this will check if NOTESDIR has value, if it has value it will return $HOME
+```
+	${var:=value}
+```
+
+`declare notesdir=${NOTESDIR:-$HOME}`
+  
+//this will check if NOTESDIR has value, if it doesn't have value it will return $HOME
 
 
 ## Conditional Expression Patterns
@@ -209,14 +222,17 @@ arguments after this will not be interpreted as options
 
 for example
 
+```
 rm -- -l.txt   this will remote the file named -l.txt
 
 	for i in *.txt; do touch -- $1; done
 
-Good habit:
+```
 
-when you use a variable as an argument for a command
-and the contents of the variable are not under your control use the end of option
+>Good habit:
+
+>when you use a variable as an argument for a command
+>and the contents of the variable are not under your control use the end of option
 
 ## run script
 

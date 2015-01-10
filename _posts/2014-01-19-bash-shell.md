@@ -343,6 +343,12 @@ $ scp your_username@remotehost.edu:~/\{foo.txt,bar.txt\} .
 
 ```
 
+### scp with compression
+
+```
+scp -C foo.txt your_username@remotehost.edu:~
+```
+
 ```
 eg: scp -r root@192.241.142.15:~/dockerDemo ~/  
 -r for recursive, to copy the entire folder

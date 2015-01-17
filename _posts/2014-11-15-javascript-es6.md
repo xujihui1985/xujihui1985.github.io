@@ -660,6 +660,71 @@ var newFunction = new Proxy(originFunction, {
 
 ```
 
+### module import export
+
+```
+export class Employee {
+	constructor(name) {
+		this.name = name
+	}
+
+	get name() {
+		return this.name;
+    }
+
+	doWork() {
+       return `${this.name} is working`;
+    }
+}
+
+
+import {Employee} from "./Employee";
+
+var e = new Employee('sean');
+e.doWork();
+
+```
+
+#### multiple exports
+
+```
+
+export let log = function(value) {
+	console.log(value);
+}
+
+export let defaultRaise = 0.03;
+
+export let modelEmployee = new Employee('sean');
+
+
+```
+
+#### module and default
+
+if there is only one thing you want to export from the module, we can use export default syntax to export the 
+module, and we can import directly from the module without {} syntax
+
+```
+export default class Employee {
+	constructor(name) {
+		this.name = name;
+	}
+}
+
+import factory from "./Employee";
+
+```
+
+and we can use `module` syntax to import
+
+```
+module employees from './Employee';
+
+var e = employees.Employee('sean');
+``` 
+
+
 #### run es6 in node
 
 ```

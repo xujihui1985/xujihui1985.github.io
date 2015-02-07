@@ -91,3 +91,179 @@ docker run ubuntu /bin/bash -c "echo 'cool content' > /tmp/cool-file"
 `docker load -i /tmp/fridge.tar`
 
 import the tar file to the host
+
+
+### docker top <containerId>
+
+docker top command let use see the top process running in the container
+
+### docker run command
+
+docker run --cpu-shares
+docker run memory=1g   //limit the container memory to 1g
+
+docker run -d ubuntu:14.04.1 /bin/bash  run as daem
+
+docker inspect <containerId>
+
+docker attach <containerName/Id>
+
+note: the container exit while the command running inside it exit, that means the command running inside the container must running in frontend process, this is important
+
+
+### set alias for docker ps
+
+alias dps="docker ps"
+
+
+### phusion/baseimages
+
+if you want to run multipal process in one container, check this out
+
+### getting a shell in a container
+
+1. nsenter
+
+allows us to enter Namespaces
+requires the containers' PID
+
+get from "docker inspect <containersId> | grep pid"
+
+nsenter -m -u -n -p -i -t pid /bin/bash
+
+-m mount namespace  -u uts namespace -n network namespace
+-p process namespace  -i ipc namespace -t target
+
+2. docker-enter <containerId>
+3. docker exec -it <containerId> /bin/bash
+
+if we don't have nsenter or docker-enter installed on our host machine, we could use docker volumn to quick install these tools
+
+```
+docker -run -v /usr/local/bin:/target jpetazzo/nsenter
+```
+this command map the `/target` from the image `jpetazzo/nsenter` to `/usr/local/bin` from host machie, so these two commands installed into the host machine
+
+
+### push image to private registry
+
+1. tag the image
+
+`docker tag <imageId> <registryurl:port>/name`
+
+2. push the image
+
+`docker push <registryurl:port>/name`
+
+set default config
+
+```
+/etc/default/docker
+
+DOCKER_OPTS="--insecure-registry debian8.docker.course:5000"
+```
+
+
+### Dockerfile
+
+`docker images --tree`
+
+build from Dockerfile
+`docker build -t"build1" .`
+
+#### FROM
+#### RUN
+
+`RUN` is a build time instruction
+
+#### EXPOSE
+#### CMD
+
+example: 
+
+Shell Form: `CMD echo "hello world"`
+Exec Form:  `CMD ["command", "arg1"]`  --recommand
+
+`CMD` only execute at run time, it will be executed when launch a container
+
+usually one per Dockerfile
+
+#### ENTRYPOINT
+
+example: 
+
+```
+ENTRYPOINT ["echo"]
+
+docker run <imageName> hello there!
+
+==> hello there!
+```
+
+`ENTRYPOINT` instruction is similer with `CMD`, the difference is it 
+> Can't be overridden at run-time with normal commands 
+> docker run ... <command>, any command passed by docker run is treated as argument
+
+when `ENTRYPOINT` is defined, `CMD` will be treated as argument too, CMD can be used as default argument at this time
+
+#### ENV
+
+example:
+
+```
+ENV var1=ping \
+	var2=8.8.8.8
+
+CMD $var1 $var2
+```
+
+#### VOLUME
+
+example:
+
+`VOLUME /data`
+that way, make any containers launch with this images store the date on the docker host file system
+
+volume is used to seprate datastorage from container, as we know container will be disposed as long as it was rm, so does the datastoreage
+
+```
+docker run -it -v /test-vol --name=voltainer ubuntu /bin/bash
+
+then we can use --volumns-from to consume this container
+
+docker run -it --volumns-from=voltainer ubuntu /bin/bash
+
+we can access that volumn even if the voltainer container stopped or deleted
+
+docker run -v /data:/data   this will map the /data directory from the host machine to /data inside the container
+```
+
+delete the container with the volumn
+
+docker rm -v <container>
+
+
+tips: reduce the number of layers
+
+```
+RUN apt-get update \
+	apt-get install -y \
+	apache2 \
+	apache2-utils \
+	vim \
+	&& apt-get clean \
+	&& ....
+```
+
+instead of `RUN` each of these commands in new layer, it's better to compact these commandes into one layers
+
+
+### docker run with port
+
+```
+docker run -d -p 80:80 <imageName>
+```
+
+#### docker logs -f <container>
+
+this act likes `tail -f` follow the stdout of container

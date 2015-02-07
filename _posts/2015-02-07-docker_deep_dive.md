@@ -267,3 +267,70 @@ docker run -d -p 80:80 <imageName>
 #### docker logs -f <container>
 
 this act likes `tail -f` follow the stdout of container
+
+
+### Networking
+
+when install the docker daem, it will install docker0 as in network interface on the machine
+we could use `bridge-utils` (apt-get install bridge-utils) to inspect the info
+
+```
+brctl show docker0
+```
+
+the metadata of contanier locate at `/var/lib/docker/containers/containerId/`
+
+there is two files, `hosts` and `resolv.conf`, the resolv.conf is simply a copy of the host machine's resolv.conf from /etc/resolv.conf
+
+we can changes the dns config in `docker run command`
+
+```
+docker run --dns=8.8.4.4 --name=dnstest net-img
+```
+
+### exposing ports
+
+docker port <containerName>  view exposed ports
+
+`docker run -d -p 5002:80/udp --name=web2 apache-img`  use udp
+
+if we have two network interface, we could specify a network interface
+`docker run -d -p 192.168.56.50:5003:80 --name=web3 apache-img`
+
+### linking containers
+
+```
+docker run --name=src -d img
+
+docker run --name=reciver --link=src:alias-src -it ubuntu:15.04 /bin/bash
+```
+docker inspect reciver  the links property shows alias-src
+
+
+### troubleshooting
+
+docker -d -l debug &
+
+under `/etc/default/docker` file
+
+append line 
+DOCKER_OPTS="--log-level=fatal"
+
+service docker start //start docker as service
+
+
+customize docker0 bridge ip address
+
+`ip link del docker0` delete the docker0 interface
+
+under `/etc/default/docker` file
+
+DOCKER_OPTS="--bip=150.150.0.1/24"
+this will change the container's ip
+
+```
+iptables -L -V      //to check the iptables 
+```
+
+DOCKER_OPTS="--icc=false"    //stop any interal contailer communication default is true
+DOCKER_OPTS="--icc=true --iptables=false"   //set if docker engine can modify the setting of iptables

@@ -8,6 +8,15 @@ tags: [docker]
 {% include JB/setup %}
 
 
+update docker on ubuntu server
+
+```
+wget -qO- https://get.docker.com/gpg | apt-get add -
+echo deb http://get.docker.com/ubuntu docker main > /etc/apt/sources.list.d/docker.list
+apt-get update
+apt-get install lxc-docker
+```
+
 1. configuring docker to communicate over network
 
 docker use unix socket to communicate with client and server, the unix socket file locate under `/run/docker.sock`

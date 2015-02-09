@@ -8,4 +8,4 @@ tags: []
 {% include JB/setup %}
 
 
-- [] [What the Flux](http://jonathancreamer.com/what-the-flux/?utm_source=javascriptweekly&utm_medium=email) 
+- [ ] [What the Flux](http://jonathancreamer.com/what-the-flux/?utm_source=javascriptweekly&utm_medium=email) 

@@ -3,7 +3,7 @@ layout: post
 title: "functions we forget -- insertAdjacentHTML"
 description: "functions we forget"
 category: "javascript"
-tags: [dom,function]
+tags: [functions-we-forget]
 ---
 {% include JB/setup %}
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "new post"
+title: "str repr and format"
 description: ""
 category: "python"
 tags: [str,repr,format]

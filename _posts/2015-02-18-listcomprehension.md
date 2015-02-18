@@ -160,3 +160,127 @@ for stamp, value in itertools.islice(zip(timestamps, sensor), 10):
 	time.sleep(1)
 
 ```
+
+### container protocol
+
+to implement `__contains__`, you can test if the element in the container by calling `item in container`
+
+```
+class TestContainerProtocal(unittest.TestCase):
+
+    def setUp(self):
+        self.s = SortedSet([6,7,4,9])
+
+    def test_positive_contained(self):
+        self.assertTrue(6 in self.s)
+
+    def test_negative_contained(self):
+        self.assertFalse(2 in self.s)
+
+    def test_positive_not_contained(self):
+        self.assertTrue(5 not in self.s)
+
+
+class SortedSet:
+
+    def __init__(self, items=None):
+        self._items = sorted(items) if items is not None else []
+
+    def __contains__(self, item):
+        return item in self._items
+
+```
+
+### sized protocol
+
+Number of items using len(sized) function
+Must not consume or modify collection
+to implement the special method `__len__()`
+
+```
+  def __len__(self):
+        return len(self._items)
+```
+
+### iter protocol
+
+```
+
+class SortedSet:
+
+    def __init__(self, items=None):
+        self._items = sorted(set(items)) if items is not None else []
+
+    def __iter__(self):
+        return iter(self._items)
+
+
+class TestIterableProtocol(unittest.TestCase):
+    def setUp(self):
+        self.s = SortedSet([2,3,1,4])
+
+    def test_for_loop(self):
+        index = 0
+        expected = [1,2,3,4]
+        for item in self.s:
+            self.assertEqual(item, expected[index])
+            index += 1
+
+```
+
+### sequence protocol
+
+to implement `__getitem__` method, we can call item[5] this is same as c# list accessor
+
+```
+class SortedSet:
+
+    def __init__(self, items=None):
+        self._items = sorted(set(items)) if items is not None else []
+
+    
+    def __getitem__(self, index):
+        result = self._items[index]
+        return SortedSet(result) if isinstance(index, slice) else result
+
+    def __repr__(self):
+        return "SortedSet({})".format(
+            repr(self._items) if self._items else ''
+        )
+
+
+class TestSequenceProtocol(unittest.TestCase):
+    def setUp(self):
+        self.s = SortedSet([1,4,56,3,2])
+
+    def test_index_zero(self):
+        self.assertEqual(self.s[0], 1)
+
+    def test_index_one_beyond_the_end(self):
+        with self.assertRaises(IndexError):
+            self.s[5]
+
+    def test_slice_to_end(self):
+        self.assertEqual(self.s[:3], SortedSet([1,2,3]))
+
+```
+
+to implment slice function `list[:3]`, we need to check if the second parameter of `__getitem__` is instanceof slice, if it is slice, then return a new SortedSet, otherwise return the result, this still cannot pass the test
+because we haven't implement equal function to test if two SortSet are equal
+
+###　implement `__eq__` and `__ne__`
+
+python check for reference by default, by implement `__eq__` and `__ne__` we can test two object
+
+notice that it's `return` NotImplemented instead of `raise` NotImplemented
+```
+def __eq__(self, rhs):
+	if not isinstance(rhs, SortedSet):
+		return NotImplemented
+	return self._items == rhs._items
+
+def __nq__(self, rhs):
+	if not isinstance(rhs, SortedSet):
+		return NotImplemented
+	return self._items != rhs._items
+```

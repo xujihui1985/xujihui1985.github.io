@@ -85,6 +85,8 @@ init_sig.parameters
  
 ```
 
+[demo introspector.py](https://github.com/xujihui1985/pythonDemo/blob/master/introspector/introspector.py)
+
 
 ### multiple inheritance
 

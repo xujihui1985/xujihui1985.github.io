@@ -8,6 +8,21 @@ tags: [inheritance]
 {% include JB/setup %}
 
 
+in python we can use `type(instance)` to check the type of the instance
+
+eg:
+
+```
+i = 7
+type(i) --> int
+```
+
+infact, type function checks `__class__` property of the instance
+
+```
+i.__class__
+```
+
 how to check if an instance is type of T
 
 ```
@@ -27,6 +42,49 @@ issubclass(T, T)
 issubclass(SortedList, SimpleList)
 
 ```
+
+### dir
+
+we can use `dir` to check the properties of the instance
+
+### getattr
+
+we can use `getattr` to get the attribute from an instance, it's like reflection in other language
+
+```
+i = 7
+
+getattr(i, 'denominator') == i.denominator
+
+callable(getattr(i, 'conjugate'))
+```
+
+`hasattr` can used to check if attr exists on the instance
+
+```
+hasattr(i, 'bit_length') ==> True  # perfer to use exception handler instead of test hasattr, because
+								   # internally, hasattr use exception to test the attribute		
+```
+
+### globals and locals
+
+```
+we can use globals() and locals() function to check the scope variable, globals() like window object in javascript
+```
+
+### inspect in standard library
+
+```
+import inspect
+
+inspect.ismodule(sorted_set)
+inspect.getmembers(sorted_set)
+inspect.getmembers(sorted_set, inspect.isclass)
+init_sig = inspect.signature(sorted_set.SrotedSet.__init__)  # inspect the signature of the function
+init_sig.parameters
+ 
+```
+
 
 ### multiple inheritance
 

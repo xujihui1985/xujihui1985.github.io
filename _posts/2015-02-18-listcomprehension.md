@@ -284,3 +284,31 @@ def __nq__(self, rhs):
 		return NotImplemented
 	return self._items != rhs._items
 ```
+
+### inherate from `collections.abc.Sequence`
+
+abc stands for abstract base class
+
+```
+from collections.abc import Sequence
+
+class SortedSet(Sequence):
+	pass
+```
+
+### `__add__`
+
+```
+from itertools import chain
+
+def __add__(self, rsh):
+	return SortedSet(chain(self._items, rhs._items)
+	
+```
+
+### `__mul__() and __rmul()__`
+
+```
+def __mul__(self, rhs):
+	return self if rhs > 0 else SortedSet()
+```

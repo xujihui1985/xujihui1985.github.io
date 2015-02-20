@@ -147,3 +147,45 @@ create project
 bind the env to the project
 and move to the project
 ```
+
+### debug
+
+```
+import pdb
+pdb.set_trace()
+```
+
+to enable debug in python, use pdb module
+
+```
+def main():
+	local_variable= 'test'
+	import pdb
+	pdb.set_trace()
+	for _ in range(10):
+		print local_variable
+
+if __name__ == '__main__':
+	main()
+```
+
+### pdb command
+
+`l` : list the current cursor
+`n` : next step over
+`s` : step into
+`h` : help
+`w` : current stacktrace
+`c` : continue
+`b` : set break point  `b my_module:58` this will set breakpoint on line 58 in file my_module
+
+
+### sphinx  document generator
+
+installation:
+
+`pip install sphinx`
+
+usage:
+
+`sphinx-quickstart`

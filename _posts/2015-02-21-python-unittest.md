@@ -20,7 +20,23 @@ import unittest
 class ResolverTest(unittest.TestCase):
 	
 	def test_clear(self):
-		assert(True, 'pass')
+		self.assert(True, 'pass')
+
+	def test_raise_error(self):
+		with self.assertRaises(KeyError):
+			do_something()
+
+	@unittest.skip("WIP")
+	def test_skip_test(self):
+		pass
 
 ```
 
+run unittests
+
+```
+under project folder, run
+
+python -m unittest  #this will discover all the tests under the directory and run them
+
+```

@@ -17,4 +17,6 @@ tags: [reading]
 ### golang
 - [ ] ["Dependency Injection" in Golang](http://openmymind.net/Dependency-Injection-In-Go/)
 - [ ] [Things I Wish Someone Had Told Me About Golang](http://openmymind.net/Things-I-Wish-Someone-Had-Told-Me-About-Go/)
+- [ ] [the go scheduler](http://morsmachine.dk/go-scheduler/)
+
 

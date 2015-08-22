@@ -604,3 +604,62 @@ print i, " has accessed ", ip[i], " times. "
 }
 
 ```
+
+
+#### if
+
+File Test Operators
+
+```
+-e File exists
+-b block device files
+-c Char device files
+-f Regular files
+-d Directories
+-r Read access
+-w Write access
+-x Execute permission
+```
+
+#### for
+
+```
+for i in 1 2 3 4 5; do
+  echo $i
+  sleep 1
+done
+```
+
+#### while
+
+```
+countdown=10
+while [ $countdown -gt 0 ]; do
+  echo $countdown
+  let countdown=$countdown-1
+done
+
+```
+
+
+#### function
+
+```
+<funcname>() {
+
+}
+
+hello_world() {
+}
+```
+
+function in bash unlike that in most languages, it can't return value, there are some trick to achieve this
+
+```
+myfunc() {
+  local myresult="hello"
+  echo "$myresult"
+}
+
+result=$(myfunc)
+```

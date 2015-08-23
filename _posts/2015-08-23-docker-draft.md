@@ -214,3 +214,9 @@ docker run --name=reciver --link=src:alias-src -it ubuntu:15.04 /bin/bash
 #### docker swarm
 
 swarm 是用来做docker 集群的，我们之前所讲的都只是在一个docker host上执行docker container, 生产环境中，这通常是不可能的，
+
+
+#### docker machine
+
+
+#### docker compose

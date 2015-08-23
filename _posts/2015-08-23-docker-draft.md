@@ -185,6 +185,10 @@ docker run -it --volumes-from=testvolume ubuntu:14.04 /bin/bash
 docker run -v /data:/data  将Host上的目录挂载到docker上
 ```
 
+ONBUILD
+
+这个指令也非常有用，这是个钩子指令，这个指令不会在当前的image使用，而是当这个image被作为base image时，将会触发这个指令，比如说，我们有个chair的baseimage,我们可以通过ONBUILD指令来初始化脚本，当有应用使用chair作为base image时，这个指令就会被触发
+
 #### network
 
 docker container默认使用host上resolve.conf, 通过docker inspect可以看到ResolveConfPath, 可以通过 `docker run --dns=x.x.x.x` 来指定dns
@@ -206,7 +210,6 @@ docker run --name=src -d img
 
 docker run --name=reciver --link=src:alias-src -it ubuntu:15.04 /bin/bash
 ```
-
 
 #### docker swarm
 

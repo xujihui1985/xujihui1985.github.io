@@ -567,6 +567,7 @@ OFS  output filed seprate
 #### process virtural host files
 
 1. use sed to clean up the file
+
 ```
 sed ' /^\s*$/d; /^<\/Virt/a \n ' virtualhost.conf
 
@@ -663,3 +664,94 @@ myfunc() {
 
 result=$(myfunc)
 ```
+
+#### debug network connection
+
+Port Scanning
+
+```
+nmap -sT <address>
+```
+
+this command is used to scan the open port tcp of the target
+
+on the target machine
+
+```
+netstat -ltn
+```
+
+-ltn is to show listening tcp and show port number
+
+
+#### config Network
+
+```
+vi /etc/network/interfaces
+```
+
+#### use dig to resolve names
+
+dig can be used to resolve dns
+
+```
+dig sina.com
+
+cat /etc/resolv.conf
+```
+
+#### config sshd
+
+```
+/etc/ssh/sshd_config
+
+```
+
+client config
+
+```
+/etc/ssh/ssh_config
+```
+
+create key
+
+```
+ssh_keygen -t rsa
+
+ssh-copy-id -i id_rsa.pub xxx@xxxx
+
+ssh-agent  is used to cache password
+```
+
+#### config the ssh daemon
+
+```
+edit /etc/ssh/sshd_config
+```
+
+#### use ssh-agent to forward
+
+when you want to deploy your application on server, you can use ssh-agent to forward authentication instead of create a new sshkey for server
+
+1. start `ssh-agent` on your local system, add your id_rsa to your ssh-agent by `ssh-add`
+
+2. edit ~/.ssh/config
+
+```
+Host <the server you want>
+	ForwardAgent yes
+```
+
+3. ssh to your server and git clone via ssh protocol
+
+#### SSH tunnels
+
+```
+ssh -f -N -L 9090:localhost:80 xxx@webserver
+
+-f    to background the task
+-N    not execute a remote command just forwarding ports
+-L    port binding     -L  <localport>:localhost:<remoteport> remoteServer
+```
+
+netstat -ltn  to verify the port is open

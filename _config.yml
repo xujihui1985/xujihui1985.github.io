@@ -12,12 +12,12 @@ pygments: true
 #
 title : Sean
 tagline: 
-author :
-  name : Sean Xu
-  email : xujihui1985@outlook.com
-  github : xujihui1985
-  twitter : 
-  feedburner : 
+author:
+  name: Sean Xu
+  email: xujihui1985@outlook.com
+  github: xujihui1985
+  twitter: 
+  feedburner: 
 
 markdown: redcarpet
 theme: twitter
@@ -32,12 +32,12 @@ redcarpet:
 # Else if you are pushing to username.github.io, replace with your username.
 # Finally if you are pushing to a GitHub project page, include the project name at the end.
 #
-production_url : http://xujihui1985.github.io
+production_url: http://xujihui1985.github.io
 
 # All Jekyll-Bootstrap specific configurations are namespaced into this hash
 #
-JB :
-  version : 0.3.0
+JB:
+  version: 0.3.0
 
   # All links will be namespaced by BASE_PATH if defined.
   # Links in your website should always be prefixed with {{BASE_PATH}}
@@ -61,7 +61,7 @@ JB :
   #   - Only the following values are falsy: ["", null, false]
   #   - When setting BASE_PATH it must be a valid url.
   #     This means always setting the protocol (http|https) or prefixing with "/"
-  BASE_PATH : false
+  BASE_PATH: false
 
   # By default, the asset_path is automatically defined relative to BASE_PATH plus the enabled theme.
   # ex: [BASE_PATH]/assets/themes/[THEME-NAME]
@@ -71,31 +71,32 @@ JB :
   #   http://s3.amazonaws.com/yoursite/themes/watermelon
   #   /assets
   #
-  ASSET_PATH : false
+  ASSET_PATH: /assets/themes/twitter
+
 
   # These paths are to the main pages Jekyll-Bootstrap ships with.
   # Some JB helpers refer to these paths; change them here if needed.
   #
   archive_path: /archive.html
-  categories_path : /categories.html
-  tags_path : /tags.html
-  atom_path : /atom.xml
-  rss_path : /rss.xml
+  categories_path: /categories.html
+  tags_path: /tags.html
+  atom_path: /atom.xml
+  rss_path: /rss.xml
 
   # Settings for comments helper
   # Set 'provider' to the comment provider you want to use.
   # Set 'provider' to false to turn commenting off globally.
   #
-  comments :
-    provider : disqus
-    disqus :
-      short_name : jekyllbootstrap
+  comments:
+    provider: disqus
+    disqus:
+      short_name: jekyllbootstrap
     livefyre :
-      site_id : 123
-    intensedebate :
-      account : 123abc
+      site_id: 123
+    intensedebate:
+      account: 123abc
     facebook :
-      appid : 123
+      appid: 123
       num_posts: 5
       width: 580
       colorscheme: light
@@ -104,25 +105,25 @@ JB :
   # Set 'provider' to the analytics provider you want to use.
   # Set 'provider' to false to turn analytics off globally.
   #        
-  analytics :
-    provider : google 
-    google : 
+  analytics:
+    provider: google 
+    google: 
         tracking_id : 'UA-123-12'
-    getclicky :
-      site_id : 
-    mixpanel :
-        token : '_MIXPANEL_TOKEN_'
-    piwik :
-        baseURL : 'myserver.tld/piwik' # Piwik installation address (without protocol)
-        idsite : '1'                   # the id of the site on Piwik
+    getclicky:
+      site_id: 
+    mixpanel:
+        token: '_MIXPANEL_TOKEN_'
+    piwik:
+        baseURL: 'myserver.tld/piwik' # Piwik installation address (without protocol)
+        idsite: '1'                   # the id of the site on Piwik
 
   # Settings for sharing helper. 
   # Sharing is for things like tweet, plusone, like, reddit buttons etc.
   # Set 'provider' to the sharing provider you want to use.
   # Set 'provider' to false to turn sharing off globally.
   #
-  sharing :
-    provider : false
+  sharing:
+    provider: false
     
   # Settings for all other include helpers can be defined by creating 
   # a hash with key named for the given helper. ex:

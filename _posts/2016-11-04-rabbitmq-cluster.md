@@ -38,6 +38,8 @@ rabbit03> rabbitmqctl join_cluster rabbit01
 rabbit03> rabbitmqctl start_app
 ```
 
+**join cluster前必须先stop, 否则会失败**
+
 打开管理界面 http://ip:15672
 
 
